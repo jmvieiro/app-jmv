@@ -1,11 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import COLORS from "../../constants/colors";
 import { Card } from "../../screens/Card";
 import React from "react";
 import { gStyles } from "../../css/gStyles";
 
-export const ListItem = ({ item, handleModalOpen }) => {
+export const ListItem = ({ item, handleModalOpen, handleItemStateChange }) => {
   return (
     <View style={{ alignItems: "center" }}>
       <Card style={styles.itemContainer}>
@@ -14,11 +13,11 @@ export const ListItem = ({ item, handleModalOpen }) => {
         </Text>
         <TouchableOpacity
           onPress={() => {
-            handleModalOpen(item.id);
+            handleItemStateChange(item.id);
           }}
         >
           <View style={[gStyles.button, { width: "auto" }]}>
-            <Text>🕓</Text>
+            <Text>{item.state ? "✅" : "🕓" }</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity

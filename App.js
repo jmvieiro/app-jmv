@@ -27,6 +27,7 @@ export default function App() {
         {
           id: Math.random().toString(),
           value: text,
+          state: false,
         },
       ]);
       setText("");
@@ -38,7 +39,8 @@ export default function App() {
     setItemSelected(lst.find((item) => item.id === id));
     setModalVisible(true);
   };
-  const handleModalClose = (id) => {
+
+  const handleModalClose = () => {
     setItemSelected({});
     setModalVisible(false);
   };
@@ -54,6 +56,13 @@ export default function App() {
     setInputError("");
   };
 
+  const handleItemStateChange = (id) => {
+    let aux = [...lst];
+    let item = aux.find((item) => item.id === id);
+    if (item) item.state = !item.state;
+    setList(aux);
+  };
+
   return (
     <View style={gStyles.container}>
       <Header title="To Do List" />
@@ -64,7 +73,11 @@ export default function App() {
         handleClean={handleClean}
         inputError={inputError}
       />
-      <List lst={lst} handleModalOpen={handleModalOpen} />
+      <List
+        lst={lst}
+        handleModalOpen={handleModalOpen}
+        handleItemStateChange={handleItemStateChange}
+      />
       <ModalItem
         modalVisible={modalVisible}
         itemSelected={itemSelected}
