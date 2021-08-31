@@ -1,5 +1,4 @@
 import COLORS from "../constants/colors";
-import FONTS from "../assets/fonts";
 import { StyleSheet } from "react-native";
 
 export const gStyles = StyleSheet.create({
@@ -8,6 +7,7 @@ export const gStyles = StyleSheet.create({
     backgroundColor: COLORS.background,
   },
   inputText: {
+    fontFamily: "YK-Bold",
     borderColor: COLORS.white,
     color: COLORS.white,
     borderWidth: 1,
@@ -15,7 +15,7 @@ export const gStyles = StyleSheet.create({
     padding: 10,
     marginBottom: 0,
     width: "100%",
-    fontSize: 14,
+    fontSize: 18,
   },
   inputContainer: {
     width: "95%",
@@ -28,17 +28,19 @@ export const gStyles = StyleSheet.create({
     borderRadius: 6,
     width: 70,
     marginLeft: 2,
+    fontFamily: "YK-Bold",
   },
   text: {
     color: COLORS.white,
-    fontFamily: FONTS.primary,
-    fontSize: 14,
+    fontFamily: "YK-Bold",
+    fontSize: 20,
   },
   inputError: {
     flex: 1,
-    fontFamily: FONTS.primary,
+    fontFamily: "YK-Bold",
     color: COLORS.error,
     padding: 4,
-    alignSelf: "flex-start"
+    fontSize: 20,
+    alignSelf: "flex-start",
   },
 });

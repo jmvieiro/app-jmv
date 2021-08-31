@@ -7,7 +7,7 @@ import {
 } from "react-native";
 
 import COLORS from "../constants/colors";
-import { Card } from "../screens/Card";
+import { Card } from "./Card";
 import React from "react";
 import { gStyles } from "../css/gStyles";
 
@@ -51,12 +51,6 @@ const styles = StyleSheet.create({
   screen: {
     marginBottom: 15,
     alignItems: "center",
-  },
-  title: {
-    fontSize: 22,
-    marginVertical: 10,
-    marginBottom: 20,
-    color: "black",
   },
   buttonContainer: {
     marginTop: 7.5,

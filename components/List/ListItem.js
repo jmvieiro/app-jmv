@@ -1,34 +1,54 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import { Card } from "../../screens/Card";
+import { Card } from "../Card";
 import React from "react";
 import { gStyles } from "../../css/gStyles";
 
-export const ListItem = ({ item, handleModalOpen, handleItemStateChange }) => {
+export const ListItem = ({
+  item,
+  handleModalOpen,
+  handleItemStateChange,
+  handleTaskDetail,
+  main,
+}) => {
   return (
-    <View style={{ alignItems: "center" }}>
+    <View key={item.id} style={{ alignItems: "center" }}>
       <Card style={styles.itemContainer}>
-        <Text style={[gStyles.text, { padding: 10, flex: 1 }]}>
-          {item.value}
-        </Text>
+        <TouchableOpacity
+          style={{ flex: 1 }}
+          onPress={() => {
+            if (main) {
+              handleTaskDetail(item);
+            } else {
+              return;
+            }
+          }}
+        >
+          <Text style={[gStyles.text, { padding: 10, flex: 1 }]}>
+            {main && "🔎  "}
+            {item.value}
+          </Text>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             handleItemStateChange(item.id);
           }}
         >
           <View style={[gStyles.button, { width: "auto" }]}>
-            <Text>{item.state ? "✅" : "🕓" }</Text>
+            <Text>{item.state ? "✅" : "🕓"}</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            handleModalOpen(item.id);
-          }}
-        >
-          <View style={[gStyles.button, { width: "auto" }]}>
-            <Text>❌</Text>
-          </View>
-        </TouchableOpacity>
+        {main && (
+          <TouchableOpacity
+            onPress={() => {
+              handleModalOpen(item.id);
+            }}
+          >
+            <View style={[gStyles.button, { width: "auto" }]}>
+              <Text>❌</Text>
+            </View>
+          </TouchableOpacity>
+        )}
       </Card>
     </View>
   );

@@ -1,7 +1,7 @@
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import COLORS from "../constants/colors";
-import { Card } from "../screens/Card";
+import { Card } from "./Card";
 import React from "react";
 import { gStyles } from "../css/gStyles";
 
@@ -15,21 +15,23 @@ export const ModalItem = ({
     <Modal animationType="slide" visible={modalVisible} transparent>
       <Card style={styles.modalContainer}>
         <View style={styles.modalContent}>
-          <Text style={styles.modalMessage}>Delete task?</Text>
-          <Text style={styles.modalTitle}>{itemSelected.value}</Text>
+          <Text style={[gStyles.text, styles.modalMessage]}>Delete task?</Text>
+          <Text style={[gStyles.text, styles.modalTitle]}>
+            {itemSelected.value}
+          </Text>
           <View style={{ flexDirection: "row" }}>
             <TouchableOpacity onPress={handleModalClose}>
               <View
                 style={[gStyles.button, { backgroundColor: COLORS.secondary }]}
               >
-                <Text>Cancel</Text>
+                <Text style={gStyles.text}>Cancel</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleConfirmDelete}>
               <View
                 style={[gStyles.button, { backgroundColor: COLORS.success }]}
               >
-                <Text>Confirm</Text>
+                <Text style={gStyles.text}>Confirm</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     justifyContent: "center",
-    marginTop:80,
+    marginTop: 80,
   },
   modalContent: {
     padding: 20,
@@ -51,12 +53,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalMessage: {
-    fontSize: 15,
+    fontSize: 30,
     color: COLORS.white,
   },
   modalTitle: {
     color: COLORS.white,
-    fontSize: 17,
+    fontSize: 34,
     marginTop: 10,
     marginBottom: 20,
   },
